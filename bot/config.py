@@ -1,5 +1,9 @@
 import os
 
+from dotenv import load_dotenv
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-BOT_TOKEN = os.environ.get('TOKEN', '6480375606:AAEX3lTjehjRw171UDw6ircFECLM8UZoU5E')
+load_dotenv(dotenv_path=os.path.join(BASE_DIR, '.env'))
+
+BOT_TOKEN = os.getenv('BOT_TOKEN')
