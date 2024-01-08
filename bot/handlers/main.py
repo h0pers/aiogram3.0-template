@@ -8,4 +8,4 @@ from .other import other_router
 
 
 def get_all_routers() -> Tuple[Router]:
-    return get_user_router(), get_admin_router(), other_router
+    return get_admin_router(), get_user_router(), other_router
