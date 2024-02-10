@@ -8,8 +8,6 @@ class OnlyAdmin(BaseFilter):
     async def __call__(self, message: Message, *args, **kwargs):
         for admin_id in ADMINS_ID:
             if message.from_user.id == admin_id:
-                print(message.from_user.id)
-                print(admin_id)
                 return True
 
         return False
