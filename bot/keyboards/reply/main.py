@@ -12,3 +12,7 @@ class Reply:
 
     def get_markup(self, **kwargs) -> ReplyKeyboardMarkup:
         return ReplyKeyboardMarkup(keyboard=self.reply_buttons, resize_keyboard=True, **kwargs)
+
+
+class ReplyButtonText:
+    pass

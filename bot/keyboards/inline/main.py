@@ -12,3 +12,7 @@ class Inline:
 
     def get_markup(self) -> InlineKeyboardMarkup:
         return InlineKeyboardMarkup(inline_keyboard=self.inline_buttons)
+
+
+class InlineButtonText:
+    pass
