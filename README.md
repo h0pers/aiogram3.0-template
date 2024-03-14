@@ -16,6 +16,6 @@ To run this project, you will need to add the following environment variables to
 
 `REDIS_HOST=redis` -> Redis host (Ussualy use the name of redis image in docker-compose.yml file)
 
-`REDIS_PORT` -> Redis ports
+`REDIS_PORT=6379` -> Redis ports (Change 6379 value to another if you already have set first redis)
 
 
