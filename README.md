@@ -12,22 +12,10 @@ To run this project, you will need to add the following environment variables to
 
 `TELEGRAM_ADMIN_ID` - > Write here all admins telelgram ids, use , to add more than one.
 
-`POSTGRES_DB` -> Database name
-
-`POSTGRES_USER` -> Database username
-
-`POSTGRES_HOST=db` -> Database host (Ussualy use the name of db image in docker-compose.yml file)
-
-`POSTGRES_PORT` -> Database ports
-
-`POSTGRES_PASSWORD` -> Generate strong password
-
-`PG_DATA=/var/lib/psql/db` -> Way where Database data will be locate
-
 `TZ=Europe/Kyiv` -> TimeZone
 
 `REDIS_HOST=redis` -> Redis host (Ussualy use the name of redis image in docker-compose.yml file)
 
-`REDIS_PORT` -> Redis ports
+`REDIS_PORT=6379` -> Redis ports (Change 6379 value to another if you already have set first redis)
 
 
