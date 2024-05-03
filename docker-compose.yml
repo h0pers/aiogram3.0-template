@@ -10,6 +10,15 @@ services:
     restart: on-failure
     ports:
       - "${REDIS_PORT}:${REDIS_PORT}"
+  db:
+    image: postgres:15-alpine
+    env_file:
+      - .env
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: on-failure
+    ports:
+      - "${POSTGRES_PORT}:${POSTGRES_PORT}"
   bot:
     build: .
     command: sh -c "python -m run"
@@ -17,4 +26,8 @@ services:
       - .env
     restart: always
     depends_on:
+      - db
       - redis
+
+volumes:
+  pgdata:

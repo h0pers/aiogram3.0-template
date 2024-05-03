@@ -1,8 +1,11 @@
 from aiogram import Router
 
+from bot.middleware.db_updates import CollectCallbackData
 from .start import start_callback_router
 
 other_callback_router = Router()
+
+other_callback_router.callback_query.middleware(CollectCallbackData())
 
 
 def get_other_callback_router() -> Router:
