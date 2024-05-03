@@ -14,7 +14,7 @@ class OnlyAdmin(BaseFilter):
 
 class OnlyAdminCallback(BaseFilter):
     async def __call__(self, query: CallbackQuery, *args, **kwargs):
-        if str(query.message.from_user.id) in ADMINS_ID:
+        if str(query.from_user.id) in ADMINS_ID:
             return True
 
         return False
