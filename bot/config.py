@@ -10,4 +10,8 @@ DB_URL = conn_url = f'postgresql+asyncpg://{os.getenv("POSTGRES_USER")}:{os.gete
 
 BOT_TOKEN = os.getenv('BOT_TOKEN')
 
+REDIS_PORT = os.getenv('REDIS_PORT')
+
+REDIS_HOST = os.getenv('REDIS_HOST')
+
 ADMINS_ID = set([admin.strip() for admin in os.getenv('TELEGRAM_ADMIN_ID').split(',')])

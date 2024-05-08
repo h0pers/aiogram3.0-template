@@ -8,9 +8,9 @@ from redis.asyncio import Redis
 from bot.database.models.main import register_models
 from bot.handlers.main import get_all_routers
 
-from bot.config import BOT_TOKEN
+from bot.config import BOT_TOKEN, REDIS_PORT, REDIS_HOST
 
-dp = Dispatcher(storage=RedisStorage(Redis(host=os.getenv('REDIS_HOST'))))
+dp = Dispatcher(storage=RedisStorage(Redis(host=REDIS_HOST, port=REDIS_PORT)))
 
 
 async def start_bot():
