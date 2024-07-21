@@ -25,9 +25,12 @@ services:
     env_file:
       - .env
     restart: always
+    volumes:
+      - migrations:/app/bot/database/migrations/versions
     depends_on:
       - db
       - redis
 
 volumes:
+  migrations:
   pgdata:
