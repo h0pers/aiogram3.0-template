@@ -1,13 +1,14 @@
 import os
-from abc import ABC
 
+from abc import ABC
 from aiogram.fsm.storage.redis import RedisStorage
 from redis.asyncio import Redis
+from pytz import timezone
 
 
 class SettingsAbstract(ABC):
     BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-    TIMEZONE = os.getenv('TIMEZONE')
+    TIMEZONE = timezone(os.getenv('TIMEZONE'))
 
 
 class RedisSettings:
@@ -15,7 +16,7 @@ class RedisSettings:
     REDIS_HOST = os.getenv('REDIS_HOST')
 
     @property
-    def REDIS(self) -> Redis:
+    def obj(self) -> Redis:
         return Redis(host=self.REDIS_HOST, port=self.REDIS_PORT)
 
 
@@ -25,10 +26,11 @@ class DatabaseSettings:
     PASSWORD = os.getenv("POSTGRES_PASSWORD")
     HOST = os.getenv("POSTGRES_HOST")
     DB_NAME = os.getenv("POSTGRES_DB")
+    PORT = os.getenv("POSTGRES_PORT", 5432)
 
     @property
     def URL(self) -> str:
-        return f'{self.DRIVER}://{self.USER}:{self.PASSWORD}@{self.HOST}/{self.DB_NAME}'
+        return f'{self.DRIVER}://{self.USER}:{self.PASSWORD}@{self.HOST}:{self.PORT}/{self.DB_NAME}'
 
 
 class BotSettings:
@@ -37,10 +39,11 @@ class BotSettings:
     @property
     def REDIS_STORAGE(self) -> RedisStorage:
         redis_settings = RedisSettings()
-        return RedisStorage(redis_settings.REDIS)
+        return RedisStorage(redis_settings.obj)
 
 
 class Settings(SettingsAbstract):
+    DEBUG = os.getenv('DEBUG', False)
     REDIS = RedisSettings()
     DATABASE = DatabaseSettings()
     BOT = BotSettings()
