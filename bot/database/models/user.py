@@ -19,7 +19,7 @@ class User(Base):
     registration_date: Mapped[datetime.datetime] = mapped_column(DateTime(), server_default=func.now())
     last_activity_date: Mapped[datetime.datetime] = mapped_column(DateTime(),
                                                                   server_default=func.now(),
-                                                                  server_onupdate=func.now()),
+                                                                  server_onupdate=func.now())
     is_active: Mapped[bool] = mapped_column(Boolean(), default=True)
     is_admin: Mapped[bool] = mapped_column(Boolean(), default=False)
     is_blocked: Mapped[bool] = mapped_column(Boolean(), default=False)
