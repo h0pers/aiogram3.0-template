@@ -2,7 +2,9 @@ from abc import ABC, abstractmethod
 from typing import Callable, Dict, Any, Awaitable
 from aiogram import BaseMiddleware, Bot
 from aiogram.types import TelegramObject
+from datetime import datetime
 
+from bot.config import Settings
 from bot.database import Database
 from bot.database.methods.get import get
 from bot.database.methods.update import update_or_create
@@ -23,6 +25,7 @@ class GatherUserDataAbstractMiddleware(BaseMiddleware, ABC):
                                        'last_name': event.from_user.last_name,
                                        'telegram_premium': event.from_user.is_premium or False,
                                        'language_code': event.from_user.language_code,
+                                       'last_activity_date': datetime.now(Settings.TIMEZONE),
                                    },
                                    telegram_id=event.from_user.id
                                    )

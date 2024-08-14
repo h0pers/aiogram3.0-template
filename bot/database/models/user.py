@@ -17,7 +17,7 @@ class User(Base):
     telegram_premium: Mapped[bool] = mapped_column(Boolean(), default=False)
     language_code: Mapped[str] = mapped_column(String(35))
     registration_date: Mapped[datetime.datetime] = mapped_column(DateTime(), server_default=func.now())
-    last_activity_date: Mapped[datetime.datetime] = mapped_column(DateTime(),
+    last_activity_date: Mapped[datetime.datetime] = mapped_column(DateTime(timezone=True),
                                                                   server_default=func.now(),
                                                                   server_onupdate=func.now())
     is_active: Mapped[bool] = mapped_column(Boolean(), default=True)
